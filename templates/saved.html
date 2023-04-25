@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <style>
+      *{
+        font-family: “Comic Sans MS”, “Comic Sans”, monospace;
+        color: white;
+      }
+      td {
+          font-size: 24px;
+          padding: 6px;
+      }
+      body {
+        background: #1b1b1b;
+      }
+      .form-container > * {
+          margin: 3px 0 3px 0;
+      }
+      table {
+        font-size: 2vh;
+        border-collapse: collapse;
+      }
+      table, th, td {
+        border: 2px solid #444444;
+      }
+
+      tr:nth-child(even){background-color: #001d44}
+      tr:nth-child(odd){background-color: #001031}
+
+      th, td{
+        padding: 2px;
+      }
+      .btn {
+        transition: color 0.4s linear;
+        background: none;
+        color: #919191;
+        font-size: 2vh;
+        padding: 14px 28px;
+        margin: 4px;
+      }
+
+      label {
+          width: 300px;
+          text-align: end;
+          font-size: 20px;
+          color: #b7b7b7;
+          padding-right: 10px;
+      }
+
+      input {
+          font-size: 24px;
+      }
+
+      .btn:hover,
+      .btn:focus {
+        color: white;
+      }
+
+      .input-f {
+          background: #1b1b1b;
+          color: white;
+          font-size: 2vh;
+          display: inline;
+      }
+
+      .input-cell {
+          background: #1b1b1b;
+          color: white;
+          font-size: 2vh;
+          max-width: 100px;
+      }
+
+      .children-container {
+          padding-left: 50px;
+      }
+
+      .squad {
+          width: 10vw;
+          color: white;
+          margin-left: auto;
+      }
+
+      .squad:hover{
+        transform: rotateY(900000deg) rotateZ(900000deg);
+        transition: transform 1000s;
+      }
+      .main {
+          margin-left: 50px;
+      }
+      .mrp-container {
+          margin: 20px 0 20px 0;
+      }
+    </style>
+</head>
+<body>
+  <div class="squad">
+    <p>Yahor Lashko</p>
+    <p>Ryhor Hapkala</p>
+    <p>Bartłomiej Filas</p>
+    <p>Robert Durda</p>
+  </div>
+  <div class="main" id="main">
+      <label for="name">Name</label>
+      <input class="input-name input-f" placeholder="Name" name="name" value="Napój">
+      <br>
+      <label for="Prod time">Prod time</label>
+      <input class="input-prod-time input-f" placeholder="Prod time" name="Prod time" value="2">
+      <br>
+      <label for="In stock">In stock</label>
+      <input class="input-in-stock input-f" placeholder="In stock" name="In stock" value="1">
+      <br>
+      <div id="ghp-table"><label for="table">Demand</label><table><tr><td><input class="ghp-demand input-cell" placeholder="1"></td><td><input class="ghp-demand input-cell" placeholder="2"></td><td><input class="ghp-demand input-cell" placeholder="3"></td><td><input class="ghp-demand input-cell" placeholder="4"></td><td><input class="ghp-demand input-cell" placeholder="5" value="500"></td><td><input class="ghp-demand input-cell" placeholder="6"></td><td><input class="ghp-demand input-cell" placeholder="7"></td><td><input class="ghp-demand input-cell" placeholder="8" value="1500"></td><td><input class="ghp-demand input-cell" placeholder="9"></td><td><input class="ghp-demand input-cell" placeholder="10"></td></tr></table><label for="table">Production</label><table><tr><td><input class="ghp-prod input-cell" placeholder="1"></td><td><input class="ghp-prod input-cell" placeholder="2"></td><td><input class="ghp-prod input-cell" placeholder="3"></td><td><input class="ghp-prod input-cell" placeholder="4"></td><td><input class="ghp-prod input-cell" placeholder="5" value="750"></td><td><input class="ghp-prod input-cell" placeholder="6"></td><td><input class="ghp-prod input-cell" placeholder="7"></td><td><input class="ghp-prod input-cell" placeholder="8" value="1500"></td><td><input class="ghp-prod input-cell" placeholder="9"></td><td><input class="ghp-prod input-cell" placeholder="10"></td></tr></table></div>
+      <div class="children-container" id="ghp-children"><div class="mrp-container"><div class="form-container"><label for="name">Name</label><input class="input-name input-f" name="name" placeholder="Name" value="Butelka"><br><label for="table">Intake table</label><table><tr><td><input class="intake-input input-cell" placeholder="1"></td><td><input class="intake-input input-cell" placeholder="2"></td><td><input class="intake-input input-cell" placeholder="3"></td><td><input class="intake-input input-cell" placeholder="4"></td><td><input class="intake-input input-cell" placeholder="5"></td><td><input class="intake-input input-cell" placeholder="6"></td><td><input class="intake-input input-cell" placeholder="7"></td><td><input class="intake-input input-cell" placeholder="8"></td><td><input class="intake-input input-cell" placeholder="9"></td></tr></table><label for="Batch size">Batch size</label><input class="input-batch-size input-f" placeholder="Batch size" name="Batch size" value="500"><br><label for="Prod time">Prod time</label><input class="input-prod-time input-f" placeholder="Prod time" name="Prod time" value="2"><br><label for="In stock">In stock</label><input class="input-in-stock input-f" placeholder="In stock" name="In stock" value="150"><br><label for="Prod multiplier">Prod multiplier</label><input class="input-prod-multiplier input-f" placeholder="Prod multiplier" name="Prod multiplier" value="1"><br></div><div class="children-container"><div class="mrp-container"><div class="form-container"><label for="name">Name</label><input class="input-name input-f" name="name" placeholder="Name" value="Plastik (kg)"><br><label for="table">Intake table</label><table><tr><td><input class="intake-input input-cell" placeholder="1"></td><td><input class="intake-input input-cell" placeholder="2"></td><td><input class="intake-input input-cell" placeholder="3"></td><td><input class="intake-input input-cell" placeholder="4"></td><td><input class="intake-input input-cell" placeholder="5"></td><td><input class="intake-input input-cell" placeholder="6"></td><td><input class="intake-input input-cell" placeholder="7"></td><td><input class="intake-input input-cell" placeholder="8"></td><td><input class="intake-input input-cell" placeholder="9"></td></tr></table><label for="Batch size">Batch size</label><input class="input-batch-size input-f" placeholder="Batch size" name="Batch size" value="100"><br><label for="Prod time">Prod time</label><input class="input-prod-time input-f" placeholder="Prod time" name="Prod time" value="1"><br><label for="In stock">In stock</label><input class="input-in-stock input-f" placeholder="In stock" name="In stock" value="50"><br><label for="Prod multiplier">Prod multiplier</label><input class="input-prod-multiplier input-f" placeholder="Prod multiplier" name="Prod multiplier" value="0.05"><br></div><div class="children-container"></div><button class="add-child-button btn">Add MRP</button><button class="delete-button btn">Delete</button></div></div><button class="add-child-button btn">Add MRP</button><button class="delete-button btn">Delete</button></div><div class="mrp-container"><div class="form-container"><label for="name">Name</label><input class="input-name input-f" name="name" placeholder="Name" value="Nakrętka"><br><label for="table">Intake table</label><table><tr><td><input class="intake-input input-cell" placeholder="1"></td><td><input class="intake-input input-cell" placeholder="2"></td><td><input class="intake-input input-cell" placeholder="3"></td><td><input class="intake-input input-cell" placeholder="4"></td><td><input class="intake-input input-cell" placeholder="5"></td><td><input class="intake-input input-cell" placeholder="6"></td><td><input class="intake-input input-cell" placeholder="7"></td><td><input class="intake-input input-cell" placeholder="8"></td><td><input class="intake-input input-cell" placeholder="9"></td></tr></table><label for="Batch size">Batch size</label><input class="input-batch-size input-f" placeholder="Batch size" name="Batch size" value="500"><br><label for="Prod time">Prod time</label><input class="input-prod-time input-f" placeholder="Prod time" name="Prod time" value="1"><br><label for="In stock">In stock</label><input class="input-in-stock input-f" placeholder="In stock" name="In stock" value="50"><br><label for="Prod multiplier">Prod multiplier</label><input class="input-prod-multiplier input-f" placeholder="Prod multiplier" name="Prod multiplier" value="1"><br></div><div class="children-container"></div><button class="add-child-button btn">Add MRP</button><button class="delete-button btn">Delete</button></div><div class="mrp-container"><div class="form-container"><label for="name">Name</label><input class="input-name input-f" name="name" placeholder="Name" value="Ciecz (l)"><br><label for="table">Intake table</label><table><tr><td><input class="intake-input input-cell" placeholder="1"></td><td><input class="intake-input input-cell" placeholder="2"></td><td><input class="intake-input input-cell" placeholder="3"></td><td><input class="intake-input input-cell" placeholder="4"></td><td><input class="intake-input input-cell" placeholder="5"></td><td><input class="intake-input input-cell" placeholder="6"></td><td><input class="intake-input input-cell" placeholder="7"></td><td><input class="intake-input input-cell" placeholder="8"></td><td><input class="intake-input input-cell" placeholder="9"></td></tr></table><label for="Batch size">Batch size</label><input class="input-batch-size input-f" placeholder="Batch size" name="Batch size" value="1000"><br><label for="Prod time">Prod time</label><input class="input-prod-time input-f" placeholder="Prod time" name="Prod time" value="1"><br><label for="In stock">In stock</label><input class="input-in-stock input-f" placeholder="In stock" name="In stock" value="0"><br><label for="Prod multiplier">Prod multiplier</label><input class="input-prod-multiplier input-f" placeholder="Prod multiplier" name="Prod multiplier" value="1"><br></div><div class="children-container"><div class="mrp-container"><div class="form-container"><label for="name">Name</label><input class="input-name input-f" name="name" placeholder="Name" value="Cukier (kg)"><br><label for="table">Intake table</label><table><tr><td><input class="intake-input input-cell" placeholder="1"></td><td><input class="intake-input input-cell" placeholder="2"></td><td><input class="intake-input input-cell" placeholder="3"></td><td><input class="intake-input input-cell" placeholder="4"></td><td><input class="intake-input input-cell" placeholder="5"></td><td><input class="intake-input input-cell" placeholder="6"></td><td><input class="intake-input input-cell" placeholder="7"></td><td><input class="intake-input input-cell" placeholder="8"></td><td><input class="intake-input input-cell" placeholder="9"></td></tr></table><label for="Batch size">Batch size</label><input class="input-batch-size input-f" placeholder="Batch size" name="Batch size" value="150"><br><label for="Prod time">Prod time</label><input class="input-prod-time input-f" placeholder="Prod time" name="Prod time" value="1"><br><label for="In stock">In stock</label><input class="input-in-stock input-f" placeholder="In stock" name="In stock" value="0"><br><label for="Prod multiplier">Prod multiplier</label><input class="input-prod-multiplier input-f" placeholder="Prod multiplier" name="Prod multiplier" value="0.1"><br></div><div class="children-container"></div><button class="add-child-button btn">Add MRP</button><button class="delete-button btn">Delete</button></div><div class="mrp-container"><div class="form-container"><label for="name">Name</label><input class="input-name input-f" name="name" placeholder="Name" value="Gaz (m3)"><br><label for="table">Intake table</label><table><tr><td><input class="intake-input input-cell" placeholder="1"></td><td><input class="intake-input input-cell" placeholder="2"></td><td><input class="intake-input input-cell" placeholder="3"></td><td><input class="intake-input input-cell" placeholder="4"></td><td><input class="intake-input input-cell" placeholder="5"></td><td><input class="intake-input input-cell" placeholder="6"></td><td><input class="intake-input input-cell" placeholder="7"></td><td><input class="intake-input input-cell" placeholder="8"></td><td><input class="intake-input input-cell" placeholder="9"></td></tr></table><label for="Batch size">Batch size</label><input class="input-batch-size input-f" placeholder="Batch size" name="Batch size" value="300"><br><label for="Prod time">Prod time</label><input class="input-prod-time input-f" placeholder="Prod time" name="Prod time" value="1"><br><label for="In stock">In stock</label><input class="input-in-stock input-f" placeholder="In stock" name="In stock" value="10"><br><label for="Prod multiplier">Prod multiplier</label><input class="input-prod-multiplier input-f" placeholder="Prod multiplier" name="Prod multiplier" value="0.25"><br></div><div class="children-container"></div><button class="add-child-button btn">Add MRP</button><button class="delete-button btn">Delete</button></div><div class="mrp-container"><div class="form-container"><label for="name">Name</label><input class="input-name input-f" name="name" placeholder="Name" value="Woda (l)"><br><label for="table">Intake table</label><table><tr><td><input class="intake-input input-cell" placeholder="1"></td><td><input class="intake-input input-cell" placeholder="2"></td><td><input class="intake-input input-cell" placeholder="3"></td><td><input class="intake-input input-cell" placeholder="4"></td><td><input class="intake-input input-cell" placeholder="5"></td><td><input class="intake-input input-cell" placeholder="6"></td><td><input class="intake-input input-cell" placeholder="7"></td><td><input class="intake-input input-cell" placeholder="8"></td><td><input class="intake-input input-cell" placeholder="9"></td></tr></table><label for="Batch size">Batch size</label><input class="input-batch-size input-f" placeholder="Batch size" name="Batch size" value="1500"><br><label for="Prod time">Prod time</label><input class="input-prod-time input-f" placeholder="Prod time" name="Prod time" value="1"><br><label for="In stock">In stock</label><input class="input-in-stock input-f" placeholder="In stock" name="In stock" value="600"><br><label for="Prod multiplier">Prod multiplier</label><input class="input-prod-multiplier input-f" placeholder="Prod multiplier" name="Prod multiplier" value="1"><br></div><div class="children-container"></div><button class="add-child-button btn">Add MRP</button><button class="delete-button btn">Delete</button></div><div class="mrp-container"><div class="form-container"><label for="name">Name</label><input class="input-name input-f" name="name" placeholder="Name" value="Aromaty (kg)"><br><label for="table">Intake table</label><table><tr><td><input class="intake-input input-cell" placeholder="1"></td><td><input class="intake-input input-cell" placeholder="2"></td><td><input class="intake-input input-cell" placeholder="3"></td><td><input class="intake-input input-cell" placeholder="4"></td><td><input class="intake-input input-cell" placeholder="5"></td><td><input class="intake-input input-cell" placeholder="6"></td><td><input class="intake-input input-cell" placeholder="7"></td><td><input class="intake-input input-cell" placeholder="8"></td><td><input class="intake-input input-cell" placeholder="9"></td></tr></table><label for="Batch size">Batch size</label><input class="input-batch-size input-f" placeholder="Batch size" name="Batch size" value="20"><br><label for="Prod time">Prod time</label><input class="input-prod-time input-f" placeholder="Prod time" name="Prod time" value="2"><br><label for="In stock">In stock</label><input class="input-in-stock input-f" placeholder="In stock" name="In stock" value="6"><br><label for="Prod multiplier">Prod multiplier</label><input class="input-prod-multiplier input-f" placeholder="Prod multiplier" name="Prod multiplier" value="0.02"><br></div><div class="children-container"></div><button class="add-child-button btn">Add MRP</button><button class="delete-button btn">Delete</button></div></div><button class="add-child-button btn">Add MRP</button><button class="delete-button btn">Delete</button></div></div>
+      <button class="btn" onclick="addElements(document.getElementById('ghp-children'));">Add MRP</button>
+      <br>
+      <button class="btn" style="margin-top: 10px" onclick="sendReq();">Calculate</button>
+  </div>
+  <div class="out-table"></div>
+  
+<script>
+        const addElements = (element) => {
+            let divMain = document.createElement("div");
+            let divChildren = document.createElement("div");
+            let buttonChild = document.createElement("button");
+            let buttonDelete = document.createElement("button");
+            let form = document.createElement("div");
+            buttonChild.setAttribute("class", "add-child-button btn");
+            buttonChild.addEventListener("click", () => { addElements(divChildren); })
+            buttonChild.innerText = "Add MRP";
+            buttonDelete.setAttribute("class", "delete-button btn");
+            buttonDelete.addEventListener("click", () => { divMain.remove(); })
+            buttonDelete.innerText = "Delete";
+            divChildren.setAttribute("class", "children-container");
+            divMain.setAttribute("class", "mrp-container");
+            form.setAttribute("class", "form-container");
+            addForm(form);
+
+            divMain.appendChild(form);
+            divMain.appendChild(divChildren);
+            divMain.appendChild(buttonChild);
+            divMain.appendChild(buttonDelete);
+            element.appendChild(divMain);
+        }
+
+        const createGHPTable = (inputClass, element, name) => {
+            let table = document.createElement("table");
+            let itRow = document.createElement("tr");
+            for (let i = 1; i < 11; i++) {
+                let itrCell = document.createElement("td");
+                let cellInput = document.createElement("input");
+                cellInput.setAttribute("class", inputClass);
+                cellInput.setAttribute("placeholder", i);
+                itrCell.appendChild(cellInput);
+                itRow.appendChild(itrCell);
+            }
+            table.appendChild(itRow);
+            createLabel("table", element, name);
+            element.appendChild(table);
+        }
+
+        const addForm = (element) => {
+            let inputName = document.createElement("input");
+            let intakeTable = document.createElement("table");
+            let itRow = document.createElement("tr");
+            for (let i = 1; i < 10; i++) {
+                let itrCell = document.createElement("td");
+                let cellInput = document.createElement("input");
+                cellInput.setAttribute("class", "intake-input input-cell");
+                cellInput.setAttribute("placeholder", i);
+                itrCell.appendChild(cellInput);
+                itRow.appendChild(itrCell);
+            }
+            createLabel("name", element, "Name");
+            inputName.setAttribute("class", "input-name input-f");
+            inputName.setAttribute("name", "name");
+            inputName.setAttribute("placeholder", "Name");
+            intakeTable.appendChild(itRow);
+            element.appendChild(inputName);
+            element.appendChild(document.createElement("br"));
+            createLabel("table", element, "Intake table");
+            element.appendChild(intakeTable);
+
+            createLabel("Batch size", element, "Batch size");
+            let bs = createEl("input", "input-batch-size input-f", element);
+            bs.setAttribute("placeholder", "Batch size");
+            bs.setAttribute("name", "Batch size");
+            element.appendChild(document.createElement("br"));
+
+            createLabel("Prod time", element, "Prod time");
+            let pt = createEl("input", "input-prod-time input-f", element);
+            pt.setAttribute("placeholder", "Prod time");
+            pt.setAttribute("name", "Prod time");
+            element.appendChild(document.createElement("br"));
+
+            createLabel("In stock", element, "In stock");
+            let is = createEl("input", "input-in-stock input-f", element);
+            is.setAttribute("placeholder", "In stock");
+            is.setAttribute("name", "In stock");
+            element.appendChild(document.createElement("br"));
+
+            createLabel("Prod multiplier", element, "Prod multiplier");
+            let pm = createEl("input", "input-prod-multiplier input-f", element)
+            pm.setAttribute("placeholder", "Prod multiplier");
+            pm.setAttribute("name", "Prod multiplier");
+            element.appendChild(document.createElement("br"));
+        }
+
+        const createEl = (type_, class_, parent_, innerText_="") => {
+            let el = document.createElement(type_);
+            el.setAttribute("class", class_);
+            el.innerText = innerText_;
+            parent_.appendChild(el);
+            return el;
+        }
+
+        const createLabel = (for_, element_, innerText_) => {
+            let l = document.createElement("label");
+            l.setAttribute("for", for_);
+            l.innerText = innerText_;
+            element_.appendChild(l);
+        }
+
+        const gatherChildrenData = () => {
+            let mainElement = document.getElementById("main");
+            let mainChildrenElement = document.getElementById("ghp-children");
+            let childrenData = {};
+            childrenData.children = []
+            childrenData.prod_table = [];
+            childrenData.demand_table = [];
+            childrenData.name = mainElement.getElementsByClassName("input-name")[0].value;
+            childrenData.prod_time = mainElement.getElementsByClassName("input-prod-time")[0].value;
+            childrenData.in_stock = mainElement.getElementsByClassName("input-in-stock")[0].value;
+
+            Array.from(mainElement.getElementsByClassName("ghp-demand")).forEach(el => {
+                childrenData.demand_table.push(el.value);
+            });
+            Array.from(mainElement.getElementsByClassName("ghp-prod")).forEach(el => {
+                childrenData.prod_table.push(el.value);
+            });
+
+            Array.from(mainChildrenElement.children).forEach(c => {
+                let child = {};
+                childrenData.children.push(child);
+                gatherDataRecursive(c, child);
+            });
+            return childrenData;
+        }
+
+        const gatherDataRecursive = (element, obj) => {
+            let formC = element.getElementsByClassName("form-container")[0];
+            let inputName = formC.getElementsByClassName("input-name")[0];
+            let inputBs = formC.getElementsByClassName("input-batch-size")[0];
+            let inputPt = formC.getElementsByClassName("input-prod-time")[0];
+            let inputIs = formC.getElementsByClassName("input-in-stock")[0];
+            let inputPm = formC.getElementsByClassName("input-prod-multiplier")[0];
+            let childrenC = element.getElementsByClassName("children-container")[0];
+            obj.name = inputName.value;
+            obj.batch_size = inputBs.value;
+            obj.prod_time = inputPt.value;
+            obj.in_stock = inputIs.value;
+            obj.prod_multiplier = inputPm.value;
+            obj.intake_table = [];
+            let inputs = formC.getElementsByClassName("intake-input");
+            Array.from(inputs).forEach(el => {
+                obj.intake_table.push(el.value);
+            });
+
+            obj.children = [];
+            let children = childrenC.getElementsByClassName("mrp-container");
+            Array.from(children).forEach(child => {
+                let childObj = {};
+                obj.children.push(childObj);
+                gatherDataRecursive(child, childObj);
+            });
+        }
+
+        const sendReq = () => {
+            let data = gatherChildrenData();
+            $.ajax({
+                url: "/calculate/",
+                data: JSON.stringify(data),
+                success: (response) => {
+                    document.getElementsByClassName("out-table")[0].innerHTML = response;
+                },
+            });
+        }
+</script>
+
+</body></html>
