@@ -36,7 +36,7 @@ class MRP:
             # compute current in_stock amount
             self.net_demand_table[ts] = min(self.in_stock_table[ts] - self.demand_table[ts] +
                                             self.intake_table[ts], 0)
-            self.in_stock_table[ts] -= self.demand_table[ts]
+            self.in_stock_table[ts] -= self.demand_table[ts] - self.intake_table[ts]
 
             # order more if necessary
             if self.net_demand_table[ts] < 0:

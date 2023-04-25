@@ -45,14 +45,19 @@ class MRPTree:
         self.get_item(tree_coords).add_child_MRP(mrp, prod_multiplier)
 
 
+def r0(list_: list):
+    return [i if i != 0 else "" for i in list_]
+
+
 class Convert:
+
     @staticmethod
     def ghp_to_rows(ghp):
         return [
             [ghp.name] + ["" for n in range(ghp.timestamps)],
             ["Okres"] + [str(n + 1) for n in range(ghp.timestamps)],
-            ["Przewidywany popyt"] + ghp.demand_table,
-            ["Produkcja"] + ghp.production_table,
+            ["Przewidywany popyt"] + r0(ghp.demand_table),
+            ["Produkcja"] + r0(ghp.production_table),
             ["Dostępne"] + ghp.in_stock_table
         ]
 
@@ -61,12 +66,12 @@ class Convert:
         return [
             [mrp.name] + ["" for n in range(mrp.timestamps)],
             ["Okres"] + [str(n + 1) for n in range(mrp.timestamps)],
-            ["Całkowite zapotrzebowanie"] + mrp.demand_table,
-            ["Planowane przyjęcia"] + mrp.intake_table,
+            ["Całkowite zapotrzebowanie"] + r0(mrp.demand_table),
+            ["Planowane przyjęcia"] + r0(mrp.intake_table),
             ["Przewidywane na stanie"] + mrp.in_stock_table,
             ["Zapotrzebowanie netto"] + [abs(el) for el in mrp.net_demand_table],
-            ["Planowane zamówienia"] + mrp.planned_orders_table,
-            ["Planowane przyjęcie zamówień"] + mrp.orders_intake_table
+            ["Planowane zamówienia"] + r0(mrp.planned_orders_table),
+            ["Planowane przyjęcie zamówień"] + r0(mrp.orders_intake_table)
         ]
 
     @staticmethod
@@ -80,7 +85,7 @@ class Convert:
                     batch_size=int(json_element["batch_size"]),
                     in_stock=int(json_element["in_stock"]),
                     level=0,
-                    intake_list=[int(i) if i != "" else 0 for i in json_element["intake_table"]]
+                    intake_list=[float(i) if i != "" else 0 for i in json_element["intake_table"]]
                 ), float(json_element["prod_multiplier"]))
                 json_to_tree_recursive(new_element, json_element["children"])
 
@@ -89,8 +94,8 @@ class Convert:
             prod_time=int(json_data["prod_time"]),
             level=0,
             in_stock=int(json_data["in_stock"]),
-            demand_list=[int(i) if i != "" else 0 for i in json_data["demand_table"]],
-            production_list=[int(i) if i != "" else 0 for i in json_data["prod_table"]],
+            demand_list=[float(i) if i != "" else 0 for i in json_data["demand_table"]],
+            production_list=[float(i) if i != "" else 0 for i in json_data["prod_table"]],
         )
         json_to_tree_recursive(ghp, json_data["children"])
         tree = MRPTree()
@@ -115,15 +120,18 @@ class Save:
         table = "<table>"
         element_rows = []
         for element in tree.get_tree():
+            max_rows = 0
             if isinstance(element, GHP):
                 element_rows = Convert.ghp_to_rows(element)
             elif isinstance(element, MRP):
                 element_rows = Convert.mrp_to_rows(element)
             for row in element_rows:
+                max_rows = max(max_rows, len(row))
                 table += "<tr>"
                 for cell in row:
                     table += f"<td>{cell}</td>"
                 table += "</tr>"
+            table += "<tr>" + "<th>----</th>" * max_rows + "</tr>"
         table += "</table>"
         if ret:
             return layout(table)
